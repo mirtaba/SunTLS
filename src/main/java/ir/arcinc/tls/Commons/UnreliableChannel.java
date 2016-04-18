@@ -20,14 +20,15 @@ public class UnreliableChannel extends Observable{
         this.errorRate = errorRate;
     }
 
-    public void send(byte[] data){
+    public boolean send(byte[] data){
         byte[] corruptdata = data.clone();
         if (randomizer.nextDouble() < lossRate)
-            return;
+            return false;
         for (int j=0; j < corruptdata.length; j++)
             if (randomizer.nextDouble() < errorRate)
                 corruptdata[j] += randomizer.nextDouble();
         this.setChanged();
         this.notifyObservers(corruptdata);
+        return true;
     }
 }

@@ -10,41 +10,22 @@ import java.util.TimerTask;
  */
 public abstract class AbstractSender implements Observer{
     private UnreliableChannel channel;
-    private Timer timer = new Timer();
-
-    private long timeOut = 0;
 
     public AbstractSender(UnreliableChannel channel) {
         this.channel = channel;
-        timer.schedule(new TimeOut(), timeOut);
     }
 
     public abstract void receiveFromApplication(byte[] data);
     public abstract void receive(byte[] data);
     public abstract void timeOut();
 
-    protected void setTimeOut(long milliseconds){
-        this.timeOut = milliseconds;
-        timer.schedule(new TimeOut(), timeOut);
-    }
-
-    protected void stopTimer(){
-        timer.cancel();
-    }
-
     protected final void send(byte[] data){
-        channel.send(data);
+        if(!channel.send(data))
+            timeOut();
     }
 
     @Override
     public final void update(Observable o, Object arg) {
         this.receive((byte[]) arg);
-    }
-
-    private class TimeOut extends TimerTask{
-        @Override
-        public void run() {
-            timeOut();
-        }
     }
 }
