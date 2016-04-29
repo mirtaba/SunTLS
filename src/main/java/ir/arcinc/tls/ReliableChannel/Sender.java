@@ -16,8 +16,6 @@ public class Sender extends AbstractSender {
      *
      * @param data data received from application to be sent to another application
      * Use send(byte[]) to send a data to channel.
-     * Use setTimeOut(long) to set timer timeOut
-     * Use stopTimer() to prevent timer to interrupt.
      */
 
     @Override
