@@ -31,7 +31,7 @@ public class SenderApplication {
 
     public void sendData(){
         for (byte[] packet : data){
-            sender.send(packet);
+            sender.receiveFromApplication(packet);
         }
     }
 }
