@@ -21,7 +21,7 @@ public class Initializer {
         Sender sender = new Sender(sendChannel);
         receiveChannel.addObserver(sender);
 
-        Receiver receiver = new Receiver(receiveChannel);
+        Receiver receiver = new Receiver(receiveChannel,sender);
         sendChannel.addObserver(receiver);
 
         List<byte[]> data = new LinkedList<>();
