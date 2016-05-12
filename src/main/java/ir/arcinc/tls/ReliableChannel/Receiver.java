@@ -1,15 +1,18 @@
 package ir.arcinc.tls.ReliableChannel;
 
 import ir.arcinc.tls.Commons.AbstractReceiver;
+import ir.arcinc.tls.Commons.AbstractSender;
 import ir.arcinc.tls.Commons.UnreliableChannel;
+
+import java.net.URLEncoder;
 
 /**
  * Created by tahae on 4/18/2016.
  */
 public class Receiver extends AbstractReceiver {
 
-    public Receiver(UnreliableChannel channel) {
-        super(channel);
+    public Receiver(UnreliableChannel channel, AbstractSender sender) {
+        super(channel,sender);
     }
 
     /**
