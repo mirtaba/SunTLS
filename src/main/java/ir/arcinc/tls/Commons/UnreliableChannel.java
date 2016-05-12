@@ -41,7 +41,7 @@ public class UnreliableChannel extends Observable{
 
         for (int j=0; j < corruptdata.length; j++)
             if (randomizer.nextDouble() < errorRate)
-                corruptdata[j] += randomizer.nextDouble();
+                corruptdata[j] += randomizer.nextInt(256);
         this.setChanged();
         this.notifyObservers(corruptdata);
         return true;

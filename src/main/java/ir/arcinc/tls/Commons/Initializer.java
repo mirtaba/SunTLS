@@ -12,7 +12,7 @@ import java.util.List;
 public class Initializer {
     public Initializer(){
         double lossRate = 0.01;
-        double errorRate = 0.001;
+        double errorRate = 0.0005;
         double lateRate = 0.05;
 
         UnreliableChannel sendChannel = new UnreliableChannel(lossRate, errorRate, lateRate);
